@@ -38,6 +38,9 @@
         </activity>
 
         <activity android:name=".MainActivity" tools:node="remove" />
+        <activity-alias
+            android:name="${applicationId}.launcher.DefaultIconAlias"
+            tools:node="remove" />
         <activity android:name=".DebugActivity" tools:node="remove" />
         <activity android:name=".RestoreBackupFileActivity" tools:node="remove" />
         <activity android:name=".discord.DiscordOAuthCallbackActivity" tools:node="remove" />
