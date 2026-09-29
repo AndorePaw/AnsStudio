@@ -1414,9 +1414,10 @@ class MainActivity : ComponentActivity() {
 
                         if ((
                                 currentRoute?.startsWith("artist/") == true ||
-                                    currentRoute?.startsWith("album/") == true
+                                    currentRoute?.startsWith("album/") == true ||
+                                    currentRoute?.startsWith("local_playlist/") == true
                             ) &&
-                            playerBottomSheetState.isExpanded
+                            playerBottomSheetState.isExpandedOrExpanding
                         ) {
                             playerBottomSheetState.collapseSoft()
                         }
@@ -1707,7 +1708,7 @@ class MainActivity : ComponentActivity() {
                                                 contentAreaFocusRequester
                                             },
                                         onItemClick = { screen ->
-                                            val wasPlayerActive = playerBottomSheetState.isExpanded
+                                            val wasPlayerActive = playerBottomSheetState.isExpandedOrExpanding
                                             if (wasPlayerActive) {
                                                 playerBottomSheetState.collapse(if (disableAnimations) snap() else spring())
                                             }
@@ -2305,7 +2306,15 @@ class MainActivity : ComponentActivity() {
                                                         true
                                                 },
                                                 onItemClick = { screen, isSelected ->
-                                                    handlePrimaryNavigationClick(screen, isSelected)
+                                                    val wasPlayerActive = playerBottomSheetState.isExpandedOrExpanding
+                                                    if (wasPlayerActive) {
+                                                        playerBottomSheetState.collapse(
+                                                            if (disableAnimations) snap() else spring(),
+                                                        )
+                                                    }
+                                                    if (!wasPlayerActive || !isSelected) {
+                                                        handlePrimaryNavigationClick(screen, isSelected)
+                                                    }
                                                 },
                                                 onSearchItemDoubleClick = {
                                                     searchSource = SearchSource.ONLINE
