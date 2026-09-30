@@ -427,7 +427,7 @@ dependencies {
 
 androidComponents {
     onVariants(selector().all()) { variant ->
-        if ("automotive" in variant.name) return@onVariants
+        if (variant.productFlavors.any { (_, flavor) -> flavor == "automotive" }) return@onVariants
         val capitalizedVariantName =
             variant.name.replaceFirstChar { character ->
                 if (character.isLowerCase()) character.titlecase() else character.toString()
