@@ -405,31 +405,13 @@ private fun ImmersiveBackdrop(
             )
         }
 
-    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
-        val backdropRotationScaleX =
-            remember(maxWidth, maxHeight) {
-                if (maxWidth > 0.dp) {
-                    (maxHeight / maxWidth).coerceAtLeast(1f)
-                } else {
-                    1f
-                }
-            }
-        val backdropRotationScaleY =
-            remember(maxWidth, maxHeight) {
-                if (maxHeight > 0.dp) {
-                    (maxWidth / maxHeight).coerceAtLeast(1f)
-                } else {
-                    1f
-                }
-            }
+    Box(modifier = Modifier.fillMaxSize()) {
         val rotatedBackdropModifier =
-            remember(backdropRotationScaleX, backdropRotationScaleY) {
+            remember {
                 Modifier
                     .fillMaxSize()
                     .graphicsLayer {
-                        rotationZ = 90f
-                        scaleX = backdropRotationScaleX
-                        scaleY = backdropRotationScaleY
+                        rotationZ = 180f
                     }
             }
         val stageFadeMask =
