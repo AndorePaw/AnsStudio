@@ -406,6 +406,32 @@ private fun ImmersiveBackdrop(
         }
 
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+        val backdropRotationScaleX =
+            remember(maxWidth, maxHeight) {
+                if (maxWidth > 0.dp) {
+                    (maxHeight / maxWidth).coerceAtLeast(1f)
+                } else {
+                    1f
+                }
+            }
+        val backdropRotationScaleY =
+            remember(maxWidth, maxHeight) {
+                if (maxHeight > 0.dp) {
+                    (maxWidth / maxHeight).coerceAtLeast(1f)
+                } else {
+                    1f
+                }
+            }
+        val rotatedBackdropModifier =
+            remember(backdropRotationScaleX, backdropRotationScaleY) {
+                Modifier
+                    .fillMaxSize()
+                    .graphicsLayer {
+                        rotationZ = 90f
+                        scaleX = backdropRotationScaleX
+                        scaleY = backdropRotationScaleY
+                    }
+            }
         val stageFadeMask =
             remember {
                 Brush.verticalGradient(
@@ -439,7 +465,7 @@ private fun ImmersiveBackdrop(
                     fallback = artworkPlaceholder,
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = rotatedBackdropModifier,
                 )
                 AsyncImage(
                     model = artworkRequest,
