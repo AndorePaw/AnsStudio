@@ -1883,6 +1883,7 @@ class MainActivity : ComponentActivity() {
                                                         Icon(
                                                             painter = painterResource(R.drawable.about_appbar),
                                                             contentDescription = null,
+                                                            tint = androidx.compose.ui.graphics.Color.Unspecified,
                                                             modifier =
                                                                 Modifier
                                                                     .size(35.dp)

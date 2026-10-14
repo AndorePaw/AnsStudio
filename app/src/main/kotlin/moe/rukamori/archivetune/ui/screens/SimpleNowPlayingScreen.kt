@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.Icon
@@ -57,6 +58,13 @@ fun SimpleNowPlayingScreen(navController: NavController) {
             modifier = Modifier.align(Alignment.TopEnd).padding(8.dp),
         ) {
             Icon(Icons.Default.Search, contentDescription = "Cari")
+        }
+
+        IconButton(
+            onClick = { navController.navigate("settings") },
+            modifier = Modifier.align(Alignment.TopStart).padding(8.dp),
+        ) {
+            Icon(Icons.Default.Settings, contentDescription = "Pengaturan")
         }
 
         Column(
