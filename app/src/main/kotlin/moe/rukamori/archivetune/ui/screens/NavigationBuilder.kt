@@ -97,11 +97,7 @@ fun NavGraphBuilder.navigationBuilder(
     libraryScrollBehavior: TopAppBarScrollBehavior,
 ) {
     composable(Screens.Home.route) {
-        HomeScreen(
-            navController = navController,
-            viewModel = homeViewModel,
-            headerScrollConnection = homeScrollConnection,
-        )
+SimpleNowPlayingScreen(navController)
     }
     composable(
         Screens.Library.route,
