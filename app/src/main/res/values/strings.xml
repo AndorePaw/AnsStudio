@@ -1130,6 +1130,6 @@
     <string name="scheduled_backup_directory_saved">Backup directory saved</string>
     <string name="scheduled_backup_load_failed">Scheduled backup settings could not be loaded</string>
     <string name="scheduled_backup_update_failed">Scheduled backup settings could not be saved</string>
-    <string name="gatekeeper_connection_blocked">Connection blocked by AnsStudio Remote. This app could not be verified as an official AnsStudio build. Install an official build from https://github.com/rukamori/AnsStudio or https://t.me/AnsStudioGC.</string>
+    <string name="gatekeeper_connection_blocked">Connection blocked by ArchiveTune Remote, a service run by the original ArchiveTune developer. AnsStudio is an unofficial fork and cannot be verified as an official ArchiveTune build. Official builds: https://github.com/rukamori/ArchiveTune</string>
     <string name="local_songs_metadata_unavailable">Imported %1$d songs. Online metadata is unavailable; file tags were kept.</string>
 </resources>
