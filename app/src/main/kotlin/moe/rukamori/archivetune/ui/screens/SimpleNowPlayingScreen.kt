@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -55,14 +56,14 @@ fun SimpleNowPlayingScreen(navController: NavController) {
                     ?.savedStateHandle
                     ?.set("openSearch", true)
             },
-            modifier = Modifier.align(Alignment.TopEnd).padding(8.dp),
+            modifier = Modifier.align(Alignment.TopEnd).statusBarsPadding().padding(top = 64.dp, end = 8.dp),
         ) {
             Icon(Icons.Default.Search, contentDescription = "Cari")
         }
 
         IconButton(
             onClick = { navController.navigate("settings") },
-            modifier = Modifier.align(Alignment.TopStart).padding(8.dp),
+            modifier = Modifier.align(Alignment.TopStart).statusBarsPadding().padding(top = 64.dp, start = 8.dp),
         ) {
             Icon(Icons.Default.Settings, contentDescription = "Pengaturan")
         }
@@ -111,23 +112,6 @@ fun SimpleNowPlayingScreen(navController: NavController) {
                     overflow = TextOverflow.Ellipsis,
                 )
                 Spacer(Modifier.height(24.dp))
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(24.dp),
-                ) {
-                    FilledIconButton(
-                        onClick = { playerConnection.player.togglePlayPause() },
-                        modifier = Modifier.size(72.dp),
-                    ) {
-                        Text(if (isPlaying) "❚❚" else "▶", fontSize = 24.sp)
-                    }
-                    FilledTonalIconButton(
-                        onClick = { playerConnection.seekToNext() },
-                        modifier = Modifier.size(48.dp),
-                    ) {
-                        Text("⏭", fontSize = 18.sp)
-                    }
-                }
             }
         }
     }
